@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/jpeg" href="/src/assets/logo.jpg" />
+    <title>CorpMind</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --navy:        #1C2B4A;
+        --navy-light:  #253659;
+        --navy-muted:  #4A6080;
+        --amber:       #E9A84C;
+        --amber-light: #FEF3DC;
+        --amber-dark:  #C8892E;
+        --bg:          #F4F5F7;
+        --surface:     #FFFFFF;
+        --text:        #1A1A2E;
+        --muted:       #6B7280;
+        --border:      #E2E5EA;
+        --danger:      #DC2626;
+        --danger-bg:   #FEE2E2;
+        --success:     #059669;
+        --success-bg:  #D1FAE5;
+        --sidebar-w:   240px;
+        --radius:      10px;
+        --mono:        'JetBrains Mono', monospace;
+        --sans:        'Inter', sans-serif;
+      }
+
+      html, body, #root {
+        height: 100%;
+        font-family: var(--sans);
+        background: var(--bg);
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      button { font-family: var(--sans); cursor: pointer; }
+      input  { font-family: var(--sans); }
+
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(6px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes blink {
+        0%, 100% { opacity: 0.3; } 50% { opacity: 1; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
