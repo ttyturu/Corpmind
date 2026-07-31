@@ -16,7 +16,7 @@ FastAPI was chosen for its async support and fast iteration speed for a solo-bui
 
 ---
 
-## Data Privacy (read this first)
+## Data Privacy
 
 Uploaded document content and chat questions are sent to OpenAI's API (embeddings + `gpt-4o-mini`) to power the RAG pipeline. Under OpenAI's API terms (distinct from the consumer ChatGPT product):
 
