@@ -6,12 +6,37 @@ import logo from './assets/logo.jpg'
 
 export default function App() {
   const [messages, setMessages] = useState([])
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
     <BrowserRouter>
-      <div style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
+      <div className="app-shell" style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
+        {/* Mobile top bar */}
+        <div className="mobile-topbar">
+          <button
+            onClick={() => setSidebarOpen(true)}
+            aria-label="Open menu"
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: '#fff',
+              fontSize: '1.3rem',
+              lineHeight: 1,
+              padding: '0.25rem 0.4rem',
+            }}
+          >☰</button>
+          <img src={logo} alt="CorpMind logo" style={{ width: 24, height: 24, objectFit: 'contain' }} />
+          <span style={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem' }}>CorpMind</span>
+        </div>
+
+        {/* Overlay backdrop (mobile only) */}
+        <div
+          className={`sidebar-overlay${sidebarOpen ? ' open' : ''}`}
+          onClick={() => setSidebarOpen(false)}
+        />
+
         {/* Sidebar */}
-        <aside style={{
+        <aside className={`sidebar${sidebarOpen ? ' open' : ''}`} style={{
           width: 'var(--sidebar-w)',
           background: 'var(--navy)',
           display: 'flex',
@@ -61,8 +86,8 @@ export default function App() {
               padding: '0 0.5rem',
               marginBottom: '0.5rem',
             }}>Navigation</p>
-            <SidebarLink to="/" icon="💬" label="Ask HR" end />
-            <SidebarLink to="/admin" icon="🗂️" label="Documents" />
+            <SidebarLink to="/" icon="💬" label="Ask HR" end onClick={() => setSidebarOpen(false)} />
+            <SidebarLink to="/admin" icon="🗂️" label="Documents" onClick={() => setSidebarOpen(false)} />
           </nav>
 
           {/* Footer */}
@@ -77,7 +102,7 @@ export default function App() {
         </aside>
 
         {/* Main */}
-        <main style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+        <main style={{ flex: 1, minWidth: 0, minHeight: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
           <Routes>
             <Route path="/" element={<ChatPage messages={messages} setMessages={setMessages} />} />
             <Route path="/admin" element={<AdminPage />} />
@@ -88,9 +113,9 @@ export default function App() {
   )
 }
 
-function SidebarLink({ to, icon, label, end }) {
+function SidebarLink({ to, icon, label, end, onClick }) {
   return (
-    <NavLink to={to} end={end} style={({ isActive }) => ({
+    <NavLink to={to} end={end} onClick={onClick} style={({ isActive }) => ({
       display: 'flex',
       alignItems: 'center',
       gap: '0.65rem',

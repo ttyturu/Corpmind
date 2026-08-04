@@ -57,7 +57,7 @@ export default function ChatPage({ messages, setMessages }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', background: 'var(--bg)' }}>
       {/* Header */}
-      <div style={{
+      <div className="page-header" style={{
         padding: '1.1rem 1.75rem',
         background: 'var(--surface)',
         borderBottom: '1px solid var(--border)',
@@ -91,7 +91,7 @@ export default function ChatPage({ messages, setMessages }) {
       </div>
 
       {/* Messages */}
-      <div style={{
+      <div className="chat-messages" style={{
         flex: 1,
         overflowY: 'auto',
         padding: '1.5rem 1.75rem',
@@ -110,7 +110,7 @@ export default function ChatPage({ messages, setMessages }) {
       </div>
 
       {/* Input */}
-      <div style={{
+      <div className="chat-input-area" style={{
         padding: '1rem 1.75rem 1.25rem',
         background: 'var(--surface)',
         borderTop: '1px solid var(--border)',
@@ -198,7 +198,7 @@ function Message({ msg }) {
       justifyContent: isUser ? 'flex-end' : 'flex-start',
       animation: 'fadeUp 0.2s ease',
     }}>
-      <div style={{ maxWidth: '72%' }}>
+      <div className="msg-bubble" style={{ maxWidth: '72%' }}>
         {!isUser && (
           <div style={{
             display: 'flex',

@@ -118,7 +118,7 @@ export default function AdminPage() {
   return (
     <div style={{ height: '100%', overflowY: 'auto', background: 'var(--bg)' }}>
       {/* Header */}
-      <div style={{
+      <div className="page-header" style={{
         padding: '1.1rem 1.75rem',
         background: 'var(--surface)',
         borderBottom: '1px solid var(--border)',
@@ -149,7 +149,7 @@ export default function AdminPage() {
         </button>
       </div>
 
-      <div style={{ padding: '1.5rem 1.75rem', maxWidth: 680 }}>
+      <div className="admin-body" style={{ padding: '1.5rem 1.75rem', maxWidth: 680 }}>
         {/* Toast */}
         {toast && (
           <div style={{
